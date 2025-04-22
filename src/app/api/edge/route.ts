@@ -1,7 +1,7 @@
-function delay(ms: number) {
-  console.log("edge")
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+// function delay(ms: number) {
+  
+//   return new Promise(resolve => setTimeout(resolve, ms));
+// }
 
 export const runtime = 'edge';
 
@@ -9,8 +9,8 @@ export async function GET(request: Request) {
   const country = request.headers.get('x-vercel-ip-country') || 'US';
   const banner = country === 'US' ? 'https://cdn.pixabay.com/user/2015/10/16/09-28-45-303_250x250.png' : 'https://cdn.pixabay.com/user/2015/10/16/09-28-45-303_250x250.png';
   const currency = country === 'US' ? 'USD' : 'EUR';
-
-  await delay(4000);
+  console.log("edge")
+  // await delay(4000);
   const products = [
     { id: 1, name: `Product A (${country})`, price: 10 },
     { id: 2, name: `Product B (${country})`, price: 15 },
