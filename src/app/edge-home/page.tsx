@@ -3,10 +3,10 @@ import ProductList from "../../components/ProductList";
 
 export default async function EdgeHomePage() {
     console.log(ProductList);
-  const res = await fetch(`http://localhost:3000/api/personalize`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/personalize`, {
     next: { revalidate: 600 },
   });
-  const { banner, currency, products } = await res.json();
+  const { currency, products } = await res.json();
 
   return (
     <div>

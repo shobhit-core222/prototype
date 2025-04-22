@@ -2,8 +2,8 @@ import { headers } from 'next/headers';
 import ProductList from '../../components/ProductList';
 
 export default async function SsrHomePage() {
-  const country = headers().get('x-vercel-ip-country') || 'US';
-  const banner = country === 'US' ? 'sale-us.jpg' : 'sale-eu.jpg';
+  const country = (await headers()).get('x-vercel-ip-country') || 'US';
+  // const banner = country === 'US' ? 'sale-us.jpg' : 'sale-eu.jpg';
   const currency = country === 'US' ? 'USD' : 'EUR';
 
   // Fake data like in the API
