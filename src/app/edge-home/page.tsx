@@ -1,20 +1,20 @@
-import { headers } from 'next/headers';
-import ProductList from '@/components/ProductList';
+import { headers } from "next/headers";
+import ProductList from "@/components/ProductList";
 
-export const runtime = 'edge';
-export const revalidate = 60;  
+export const runtime = "edge";
+export const revalidate = 600;
 
 export default async function EdgeHomePage() {
   const headerList = await headers();
-  const country = headerList.get('x-vercel-ip-country') || 'US';
-  const host = headerList.get('host') || "localhost:3000"; 
-  const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
+  const country = headerList.get("x-vercel-ip-country") || "US";
+  const host = headerList.get("host") || "localhost:3000";
+  const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
 
   const res = await fetch(`${protocol}://${host}/api/edge`, {
     headers: {
-      'x-vercel-ip-country': country,
+      "x-vercel-ip-country": country,
     },
-    next: { revalidate: 0 },
+    next: { revalidate: 300 },
   });
   // console.log(res);
 
@@ -31,7 +31,6 @@ export default async function EdgeHomePage() {
 }
 
 // import ProductList from "../../components/ProductList";
-
 
 // export default async function EdgeHomePage() {
 //     console.log(ProductList);
