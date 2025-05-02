@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
 import ProductList from "@/components/ProductList";
 
-export const runtime = "edge";
+// export const runtime = "edge";
 export const revalidate = 600;
 
 export default async function EdgeHomePage() {
