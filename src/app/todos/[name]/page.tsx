@@ -2,13 +2,13 @@
 
 export const revalidate = 600;
 
-interface PageProps {
-  params: {
-    name: string;
-  };
-}
+// interface PageProps {
+//   params: {
+//     name: string;
+//   };
+// }
 
-export default async function EdgeHomePage(props: PageProps) {
+export default async function EdgeHomePage(props: any) {
   // const headerList = await headers();
   // const country = headerList.get("x-vercel-ip-country") || "US";
   const { params } = await props;
